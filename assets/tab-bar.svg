@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" role="img" aria-label="Herdr tab bar and sidebar before and after the plugin">
+  <rect width="880" height="300" rx="8" fill="#14161b"/>
+
+  <text x="28" y="40" fill="#767e8d" font-size="12" letter-spacing="1.6">BEFORE</text>
+  <g transform="translate(28 56)">
+    <rect width="824" height="30" rx="4" fill="#1b1e25"/>
+    <rect x="6" y="5" width="44" height="20" rx="3" fill="#2f3541"/>
+    <text x="28" y="19" fill="#d7dae2" font-size="12" text-anchor="middle">1</text>
+    <text x="70" y="19" fill="#767e8d" font-size="12">2</text>
+    <text x="104" y="19" fill="#767e8d" font-size="12">3</text>
+    <text x="138" y="19" fill="#767e8d" font-size="12">4</text>
+    <text x="172" y="19" fill="#767e8d" font-size="12">5</text>
+    <text x="206" y="19" fill="#767e8d" font-size="12">6</text>
+    <text x="240" y="19" fill="#767e8d" font-size="12">7</text>
+    <text x="274" y="19" fill="#767e8d" font-size="12">8</text>
+    <text x="308" y="19" fill="#767e8d" font-size="12">+</text>
+  </g>
+
+  <text x="28" y="130" fill="#767e8d" font-size="12" letter-spacing="1.6">AFTER</text>
+  <g transform="translate(28 146)">
+    <rect width="824" height="30" rx="4" fill="#1b1e25"/>
+    <rect x="6" y="5" width="108" height="20" rx="3" fill="#2f3541"/>
+    <text x="60" y="19" fill="#93a4ff" font-size="12" text-anchor="middle">Herdr config</text>
+    <text x="130" y="19" fill="#9aa1ae" font-size="12">RFC 8058 one-click</text>
+    <text x="272" y="19" fill="#9aa1ae" font-size="12">Transport reuse</text>
+    <text x="392" y="19" fill="#9aa1ae" font-size="12">PR 33607 review</text>
+    <text x="512" y="19" fill="#9aa1ae" font-size="12">DMARC policy</text>
+    <text x="616" y="19" fill="#9aa1ae" font-size="12">Message router</text>
+    <text x="732" y="19" fill="#9aa1ae" font-size="12">Weekly-updates</text>
+  </g>
+
+  <g transform="translate(28 206)">
+    <text x="0" y="0" fill="#767e8d" font-size="12" letter-spacing="1.6">SIDEBAR · AGENTS</text>
+    <circle cx="6" cy="22" r="4" fill="#6ac49a"/>
+    <text x="20" y="26" fill="#d7dae2" font-size="12">Herdr config update</text>
+    <circle cx="6" cy="44" r="4" fill="#4b5261"/>
+    <text x="20" y="48" fill="#9aa1ae" font-size="12">RFC 8058 one-click unsubscribe architecture</text>
+    <circle cx="6" cy="66" r="4" fill="#4b5261"/>
+    <text x="20" y="70" fill="#9aa1ae" font-size="12">WhatsApp Business account client onboarding</text>
+  </g>
+</svg>
