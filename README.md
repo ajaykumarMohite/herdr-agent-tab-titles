@@ -15,10 +15,11 @@ herdr plugin action invoke ajaykumarmohite.agent-tab-titles.install-claude-code-
 
 The second command registers a small shim on Claude Code's `UserPromptSubmit` and `Stop` events, so every tab relabels itself as work moves. Restart running Claude Code sessions afterwards — hooks load at session start.
 
-Keep more than one Claude Code configuration? The installer writes into `CLAUDE_CONFIG_DIR`, so set it and run the action once per directory:
+Keep more than one Claude Code configuration? The action hooks `~/.claude` and every `~/.claude-*` directory it finds, so a split work/personal setup is covered in one run. Environment variables do not reach a plugin action — it runs under the Herdr server — so to target one directory elsewhere, call the script directly:
 
 ```sh
-CLAUDE_CONFIG_DIR=~/.claude-work herdr plugin action invoke ajaykumarmohite.agent-tab-titles.install-claude-code-hook
+herdr plugin list                                  # prints the plugin's directory
+python3 <plugin-dir>/install_claude_code_hook.py --config-dir ~/somewhere/.claude
 ```
 
 ## Use it without Claude Code
@@ -47,7 +48,7 @@ command = "herdr plugin action invoke ajaykumarmohite.agent-tab-titles.rename-al
 | Action | What it does |
 |---|---|
 | `rename-all` | Relabels every tab from the title its agent reports right now. Safe to run repeatedly. |
-| `install-claude-code-hook` | Writes `hooks/herdr-agent-tab-title.sh` into `CLAUDE_CONFIG_DIR` (default `~/.claude`) and registers it on `UserPromptSubmit` and `Stop`. Rerunning is idempotent. |
+| `install-claude-code-hook` | Writes `hooks/herdr-agent-tab-title.sh` into `~/.claude` and every `~/.claude-*` directory, and registers it on `UserPromptSubmit` and `Stop`. Rerunning is idempotent. |
 
 ## What it does
 
