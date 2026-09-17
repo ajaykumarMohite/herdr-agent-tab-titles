@@ -1,18 +1,28 @@
 id = "ajaykumarmohite.agent-tab-titles"
 name = "Agent Tab Titles"
-version = "0.1.0"
+version = "0.2.0"
 min_herdr_version = "0.9.0"
 description = "Renames each tab to the task its coding agent is working on"
 platforms = ["linux", "macos"]
 
+[[events]]
+on = "pane.agent_status_changed"
+command = ["python3", "rename_tabs_from_agent_titles.py"]
+
+[[events]]
+on = "pane.agent_detected"
+command = ["python3", "rename_tabs_from_agent_titles.py"]
+
 [[actions]]
 id = "rename-all"
-title = "Rename tabs from agent titles"
-contexts = ["workspace"]
+title = "Tab titles: rename every tab"
+description = "Relabel every tab from the title its agent is reporting now."
+contexts = ["global", "workspace"]
 command = ["python3", "rename_tabs_from_agent_titles.py", "--all"]
 
 [[actions]]
 id = "install-claude-code-hook"
-title = "Install the Claude Code hook"
-contexts = ["workspace"]
+title = "Tab titles: install the Claude Code hook"
+description = "Hook UserPromptSubmit and Stop so tabs relabel as work moves."
+contexts = ["global", "workspace"]
 command = ["python3", "install_claude_code_hook.py"]

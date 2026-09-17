@@ -17,10 +17,9 @@ AGENT_PRODUCT_NAMES = {
     "qwen",
 }
 
-herdr = os.environ.get("HERDR_BIN_PATH", "herdr")
-
 
 def run_herdr(*arguments):
+    herdr = os.environ.get("HERDR_BIN_PATH", "herdr")
     completed = subprocess.run(
         [herdr, *arguments], capture_output=True, text=True, timeout=5
     )
@@ -86,19 +85,24 @@ def every_pane():
     return read_result(run_herdr("pane", "list"), "panes") or []
 
 
-def requested_pane():
-    pane_id = sys.argv[sys.argv.index("--pane") + 1]
+def requested_pane(arguments):
+    pane_id = arguments[arguments.index("--pane") + 1]
     pane = read_result(run_herdr("pane", "get", pane_id), "pane")
     return [pane] if pane else []
 
 
-def panes_to_rename():
-    if "--all" in sys.argv:
+def panes_to_rename(arguments):
+    if "--all" in arguments:
         return every_pane()
-    if "--pane" in sys.argv:
-        return requested_pane()
+    if "--pane" in arguments:
+        return requested_pane(arguments)
     return panes_from_event()
 
 
-for pane in panes_to_rename():
-    rename_tab_after(pane)
+def main(arguments):
+    for pane in panes_to_rename(arguments):
+        rename_tab_after(pane)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
