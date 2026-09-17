@@ -63,9 +63,11 @@ rows = [["state_icon", "terminal_title_stripped"]]
 
 `prompt_new_tab_name = false` drops the "name this tab" dialog on every new tab — the point of the plugin is that you never name one again. Apply with `herdr server reload-config`.
 
-## Why a hook instead of a Herdr event
+## Events and the hook
 
-Herdr emits `pane.agent_status_changed` and `pane.agent_detected` on its API, but plugin `[[events]]` hooks do not receive them on Herdr 0.9.0 — only the agent-side hook fires reliably today. When plugin event dispatch covers pane events, this plugin can drop the shim.
+The plugin declares `[[events]]` for `pane.agent_status_changed` and `pane.agent_detected`. Herdr dispatches both to an installed plugin — `herdr plugin log list --plugin ajaykumarmohite.agent-tab-titles` shows them arriving. A plugin **linked** from a local directory did not receive them in testing, so verify against an installed copy before concluding they are dead.
+
+The Claude Code hook stays because it fires on the exact turn boundaries and does not depend on agent-status transitions being reported for that pane. Treat the events as the belt and the hook as the braces; if you use another agent, the events alone carry the rename.
 
 ## Requirements
 
